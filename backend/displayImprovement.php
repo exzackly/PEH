@@ -10,7 +10,7 @@ while ($row = $result->fetch_array(MYSQL_ASSOC)) {
 	$comments .= $row['name'] . "," . $row['comment'] . ";";
 }
 
-$sql = "SELECT *, COUNT(Likes.iid) as likeCount FROM Improvements, Likes WHERE Improvements.iid = $iid";
+$sql = "SELECT *, COUNT(Likes.iid) as likeCount FROM Improvements INNER JOIN Likes ON Improvements.iid = Likes.iid WHERE Improvements.iid = $iid";
 
 $result = executeSQL($conn, $sql);
 
