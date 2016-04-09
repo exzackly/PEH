@@ -5,14 +5,56 @@ require_once("header.php");
 ?>
 
 <body>
-    <?php
-    ob_start();
-    session_start();
-    ?>
-    <?php
-        // If user signed up successfully, show toast.
+<div class="modal fade bs-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+        <br>
+        <div class="bs-example bs-example-tabs">
+            <ul id="myTab" class="nav nav-tabs">
+              <li class="active"><a href="#login" data-toggle="tab">Log In</a></li>
+            </ul>
+        </div>
+      <div class="modal-body">
+        <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade active in" id="login">
+            <form class="form-horizontal" action="backend/session.php" method="post">
+            <fieldset>
+            <!-- Sign In Form -->
 
-    ?>
+            <!-- Text input-->
+            <div class="control-group">
+              <label class="control-label" for="userid">Email:</label>
+              <div class="controls">
+                <input required="" id="email" name="email" type="text" class="form-control" placeholder="you@email.com" class="input-medium" required="">
+              </div>
+            </div>
+
+            <!-- Password input-->
+            <div class="control-group">
+              <label class="control-label" for="password">Password:</label>
+              <div class="controls">
+                <input required="" id="password" name="password" class="form-control" type="password" placeholder="********" class="input-medium">
+              </div>
+            </div>
+
+            <!-- Button -->
+            <div class="control-group">
+              <label class="control-label" for="login"></label>
+              <div class="controls">
+                <button id="signin" name="login" class="btn btn-success">Sign In</button>
+              </div>
+            </div>
+            </fieldset>
+            </form>
+        </div>
+      <div class="modal-footer">
+      <center>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </center>
+      </div>
+    </div>
+  </div>
+</div> </div> </div> </div>
    
    <?php require_once("navigation.php"); ?>
 

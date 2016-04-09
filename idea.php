@@ -47,8 +47,13 @@ require_once("header.php");
             <div class="row">
                 <div class="col-lg-5 col-sm-6">
                     <div class="clearfix"></div>
-					<h1 class="section-heading"><?php echo $name; ?>   <?php echo $likes; ?><i class="fa fa-heart"></i></h1></h1>
+					<h1 class="section-heading"><?php echo $name; ?></h1>
                     <h2 class="section-heading"><?php echo $desc; ?></h2>
+                    <?php
+                    
+                    echo '<a class="btn btn-default btn-lg" href="backend/addLike.php?uid='. $_SESSION['uid'] .'&iid=' . $_GET['iid'] . '"><span class="network-name">Like <i class="fa fa-heart fa-fw"></i>'.$likes.'</span></a>';
+                    
+                    ?>
                     <p class="lead"></p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">

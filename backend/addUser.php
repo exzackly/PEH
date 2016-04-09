@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once("dbconn.php");
 	
 $name = $_GET['name'];
@@ -13,4 +14,10 @@ $sql = "INSERT INTO Users (name, type, email, password) VALUES ('$name', '$type'
 executeSQL($conn, $sql);
 
 echo "User Added";
+
+$id = mysqli_insert_id($conn);
+$_SESSION['uid'] = $id;
+$_SESSION['name'] = $name;
+
+header('Location: ../browse.php');
 ?>

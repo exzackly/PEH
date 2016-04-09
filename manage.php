@@ -1,11 +1,4 @@
 <?php
-    $file = file_get_contents("http://www.exzackly7.com/PEH/displayImprovement.php?iid=1");
-    $file_array = explode(',', $file);
-    $formatted_array = print_r($file_array);
-    
-?>
-
-<?php
 $title = "FoxFix - Manage";
 $customCSS = "manage-page.css";
 require_once("header.php");
@@ -14,9 +7,8 @@ require_once("header.php");
 <body>
 
 <?php
-ob_start();
 session_start();
-require('backend/login.php');
+require('backend/session.php');
 ?>
    
    <?php require_once("navigation.php"); ?>
@@ -40,31 +32,48 @@ require('backend/login.php');
     </div>
     <!-- /.intro-header -->
 
+<div class="content-section-a">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-sm-6">
+                <div class="clearfix"></div>
+                <h2 class="section-heading">Top 5 Ideas for Consideration:</h2>
+                <hr class="section-heading-spacer">
+
+            </div>
+        </div>
+    </div>
+</div>
     <!-- Page Content -->
-    <div class="content-section-a">
+    <?php
+    $improvementsSource = file_get_contents('http://www.exzackly7.com/PEH/backend/displayImprovements.php');
+    //only display top 5 ideas: 
+    $cutoff = 5;
+        foreach (explode(';', $improvementsSource) as $improvement) {  
+        if($cutoff <= 0){
+            break;
+        }     
+    echo '<div class="content-section-a">
 
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 col-sm-6">
-                    <h3>Review these top ideas:</h3>
-                    <br>
-                    <br>
-                        <div class="list-group">
-                          <a href="#" class="list-group-item active">
-                            <h4 class="list-group-item-heading">Sample Text</h4>
-                            <p class="list-group-item-text">This is some sample text...</p>
-                          </a>
-                        </div>
-                    <hr class="section-heading-spacer">
-
+                <div class="col-lg-5 col-sm-6">
+                    <div class="clearfix"></div>
+                    <a href="idea.php?iid='.explode(',', $improvement)[0].'"><h2 class="section-heading">'.explode(',', $improvement)[1].'</h2></a>
+                    <p class="lead">'.explode(',', $improvement)[2].'</p>
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                    <h1>'.explode(',', $improvement)[4].' <i class="fa fa-heart"></i><span><input type="submit" value="Push to '. explode(',', $improvement)[3] .'></h1>
                 </div>
             </div>
 
         </div>
         <!-- /.container -->
-    </div>
-    <a  name="services"></a>
 
+    </div>';
+    $cutoff--;
+        }
+    ?>
 	<?php require_once('footer.php'); ?>
    
 </body>

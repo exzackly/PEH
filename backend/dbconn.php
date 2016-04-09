@@ -24,10 +24,12 @@ function createDBandTables($conn, $dbname) {
 	//create Improvements table if not exist
 	$sql = "CREATE TABLE IF NOT EXISTS Improvements (
 	iid INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	uid INT(6) UNSIGNED NOT NULL,
 	name VARCHAR(100) NOT NULL,
 	description VARCHAR(300) NOT NULL,
 	lifecyclePhase VARCHAR(30) NOT NULL,
-	reg_date TIMESTAMP
+	reg_date TIMESTAMP,
+	FOREIGN KEY (uid) REFERENCES Users(uid)
 	) ENGINE=INNODB;";
 	executeSQL($conn, $sql);
 	

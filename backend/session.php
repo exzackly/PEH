@@ -23,7 +23,7 @@ if (isset($_POST['login'])) {
       }
    }
    */
-   $_SESSION['uid'] = "test";
+   $_SESSION['uid'] = 1;
    $_SESSION['name'] = "test";
    header('Location: ../index.php');
 } else if(!isset($_SESSION['uid'])) {

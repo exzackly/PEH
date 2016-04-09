@@ -50,7 +50,7 @@ echo <<<END
         } else if(status == "additem"){
             toastr.success('Item added successfully!', 'Success!');
         } else if (status == "notLoggedIn"){
-            toastr.error('You must be logged in to contribute ideas', 'Please Log In', {timeOut:700});
+            toastr.error('You must be logged in.', 'Please Log In', {timeOut:700});
         }
     });
     </script>

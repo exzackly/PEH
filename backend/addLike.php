@@ -9,4 +9,6 @@ $sql = "INSERT INTO Likes (uid, iid) VALUES ($user, $improvement)";
 executeSQL($conn, $sql);
 
 echo "Like Added";
+
+header('Location: ../idea.php?iid='.$improvement);
 ?>
