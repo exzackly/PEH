@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,13 +10,15 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Fox Fix</title>
+    <title>FoxFix - Browse</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/addIdea-page.css" rel="stylesheet">
+    <link href="css/browse-page.css" rel="stylesheet">
+
+    <!--Toast Library-->
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -31,6 +34,11 @@
 </head>
 
 <body>
+    <?php
+    ob_start();
+    session_start();
+    require('backend/login.php');
+    ?>
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
         <div class="container topnav">
@@ -42,20 +50,35 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand topnav" href="#">Fox Fix</a>
+                <a class="navbar-brand topnav" href="index.php">FoxFix</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="index.php">Home</a>
                     </li>
                     <li>
-                        <a href="#">Signup</a>
+                        <a href="browse.php">Browse</a>
                     </li>
                     <li>
-                        <a href="">Login</a>
+                        <a href="contribute.php">Contribute</a>
                     </li>
+                    <?php
+                    // Displays Login if no one is logged in but Logout otherwise
+                    if(!isset($_SESSION['username'])){
+
+                    echo '<li>
+                        <a data-toggle="modal" data-target=".bs-modal-sm">Login</a>
+                    </li>';
+                    } else {
+                        echo '<li>
+                        <a href="backend/logout.php">Logged in as ' . $_SESSION["name"] . '. Logout?</a>
+                    </li>';
+
+                }
+
+                ?>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -71,8 +94,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="intro-message">
-                        <h1>Contribute</h1>
-                        <h3>Give us your ideas!
+                        <h1>Browse</h1>
+                        <h3>See current ideas!</h3>
                     </div>
                 </div>
             </div>
@@ -88,20 +111,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-sm-6">
-                    <form action="backend/addImprovement.php" method="GET" id="addImprovement">
-                      <fieldset class="form-group">
-                        <label for="Name">Title</label>
-                        <input type="name" class="form-control" name="name" id="Name" placeholder="Title of your idea">
-                      </fieldset>
-                      <fieldset class="form-group">
-                      <label for="Description">Idea</label>
-                        <textarea class="form-control" name="desc" id="Description" rows="3" placeholder="Show us your vision!"></textarea>
-                         <small class="text-muted">Tell us what you want to see.</small>
+                    <?php require('backend/displayAllImprovements.php'); ?>
 
-                      </fieldset>
-                      <input type="hidden" name="lcp" value="idea"></input>
-                        <button type="submit" form="addImprovement" class="btn btn-primary">Submit</button>
-                    </form>
                 </div>
             </div>
 
@@ -133,5 +144,7 @@
     <script src="js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+        <!-- JS helper functions -->
+    <script src="js/helpers.js"></script>
 </body>
 </html>

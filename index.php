@@ -60,10 +60,10 @@ require('backend/login.php');
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="#">Home</a>
+                        <a href="index.php">Home</a>
                     </li>
                     <li>
-                        <a href="#">Browse</a>
+                        <a href="browse.php">Browse</a>
                     </li>
                     <li>
                         <a href="backend/checkLoggedIn.php">Contribute</a>
@@ -105,17 +105,18 @@ require('backend/login.php');
                         <h3>Making Marist Great Again, One Idea at a Time</h3>
                         <hr class="intro-divider">
                         <ul class="list-inline intro-social-buttons">
-                            <li>
+                        <?php
+                        if(!isset($_SESSION['uid'])){
+                            echo '<li>
                                 <a class="btn btn-default btn-lg loginsignup" data-toggle="modal" data-target=".bs-modal-sm"><i class="fa fa-sign-in fa-fw"></i> <span class="network-name">Login</span></a>
-
-
-                    </li>
+                            </li>';
+                        } ?>
 
                             <li>
                                 <a class="btn btn-default btn-lg loginsignup" href="signup.php"><i class="fa fa-plus fa-fw"></i> <span class="network-name">Sign Up</span></a>
                             </li>
                             <li>
-                                <a href="#" class="btn btn-default btn-lg"><i class="fa fa-search fa-fw"></i> <span class="network-name">Browse</span></a>
+                                <a href="browse.php" class="btn btn-default btn-lg"><i class="fa fa-search fa-fw"></i> <span class="network-name">Browse</span></a>
                             </li>
                         </ul>
                     </div>
