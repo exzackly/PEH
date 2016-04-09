@@ -67,6 +67,7 @@ require('backend/login.php');
                     </li>
                     <li>
                         <a href="backend/checkLoggedIn.php">Contribute</a>
+
                     </li>
 
                     <?php
@@ -279,7 +280,6 @@ require('backend/login.php');
         }
     });
     </script>
-
 
 </body>
 
