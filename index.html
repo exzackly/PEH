@@ -17,6 +17,9 @@
     <!-- Custom CSS -->
     <link href="css/landing-page.css" rel="stylesheet">
 
+    <!-- Toasting css -->
+    <link href="css/toastr.min.css" rel="stylesheet"/>
+
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
@@ -27,6 +30,8 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+ 
 
 </head>
 
@@ -332,8 +337,40 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+    
+    <!--Toasting code-->
+    <script src="js/toastr.min.js"></script>
 
     <script type="text/javascript">
+
+    // Gets URL GET parameter values:
+
+    var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
+
+    // Tells user with toast when they complete certain actions:
+    $(document).ready(function() {
+        var status = getUrlParameter('status');
+        if(status == "signup"){
+            toastr.success('Signup completed successfully!', 'Success!');
+        } else if(status == "additem"){
+            toastr.success('Item added successfully!', 'Success!');
+        }
+    })
+       
+
     // Opens the correct modal tab for login and signup
     $('.loginsignup').on('click', function() {
     whichtab = $(this).data('opentab');
