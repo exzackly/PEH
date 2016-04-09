@@ -55,7 +55,7 @@
                         <a href="#services">Browse</a>
                     </li>
                     <li>
-                        <a data-toggle="modal" href="#login" data-target=".bs-modal-sm">Login</a>
+                        <a class="loginsignup" data-opentab="0">Login</a>
                     </li>
                 </ul>
             </div>
@@ -78,7 +78,7 @@
                         <hr class="intro-divider">
                         <ul class="list-inline intro-social-buttons">
                             <li>
-                                <a class="btn btn-default btn-lg" data-toggle="modal" href="#login" data-target=".bs-modal-sm"><i class="fa fa-sign-in fa-fw"></i> <span class="network-name">Login</span></a>
+                                <a class="btn btn-default btn-lg loginsignup" data-opentab="0"><i class="fa fa-sign-in fa-fw"></i> <span class="network-name">Login</span></a>
 
                                     <div class="modal fade bs-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                                       <div class="modal-dialog modal-sm">
@@ -86,13 +86,13 @@
                                             <br>
                                             <div class="bs-example bs-example-tabs">
                                                 <ul id="myTab" class="nav nav-tabs">
-                                                  <li class="active"><a href="#signin" data-toggle="tab">Sign In</a></li>
+                                                  <li class="active"><a href="#login" data-toggle="tab">Log In</a></li>
                                                   <li class=""><a href="#signup" data-toggle="tab">Register</a></li>
                                                 </ul>
                                             </div>
                                           <div class="modal-body">
                                             <div id="myTabContent" class="tab-content">
-                                            <div class="tab-pane fade active in" id="signin">
+                                            <div class="tab-pane fade active in" id="login">
                                                 <form class="form-horizontal">
                                                 <fieldset>
                                                 <!-- Sign In Form -->
@@ -185,7 +185,7 @@
                     </li>
 
                             <li>
-                                <a href="#" class="btn btn-default btn-lg"><i class="fa fa-plus fa-fw"></i> <span class="network-name">Sign Up</span></a>
+                                <a class="btn btn-default btn-lg loginsignup" data-opentab="1"><i class="fa fa-plus fa-fw"></i> <span class="network-name">Sign Up</span></a>
                             </li>
                             <li>
                                 <a href="#" class="btn btn-default btn-lg"><i class="fa fa-search fa-fw"></i> <span class="network-name">Browse</span></a>
@@ -332,6 +332,16 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+    // Opens the correct modal tab for login and signup
+    $('.loginsignup').on('click', function() {
+    whichtab = $(this).data('opentab');
+    $('#myModal').modal('show');
+    $('.nav-tabs li:eq('+whichtab+') a').tab('show');
+});
+    </script>
+
 
 </body>
 
