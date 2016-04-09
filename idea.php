@@ -8,14 +8,14 @@ require_once("header.php");
     require_once('backend/session.php');
 
         // Open the file using the HTTP headers set above
-        $output = file_get_contents('http://www.exzackly7.com/PEH/backend/displayImprovement.php?iid='.$_GET['iid']);
+        $output = file_get_contents('http://www.exzackly7.com/PEH/backend/displayImprovements.php?iid='.$_GET['iid']);
         echo $output;
 
         $outputArr = explode(',', $output);
 
         $name = $outputArr[0];
-
-
+		$desc = $outputArr[1];
+		$likes = $outputArr[3];
 
     ?>
     
@@ -47,7 +47,8 @@ require_once("header.php");
             <div class="row">
                 <div class="col-lg-5 col-sm-6">
                     <div class="clearfix"></div>
-                    <h2 class="section-heading"><?php echo $name; ?></h2>
+					<h1 class="section-heading"><?php echo $name; ?>   <?php echo $likes; ?><i class="fa fa-heart"></i></h1></h1>
+                    <h2 class="section-heading"><?php echo $desc; ?></h2>
                     <p class="lead"></p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
