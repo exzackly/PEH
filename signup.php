@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,6 +35,11 @@
 
 <body>
     <?php
+    ob_start();
+    session_start();
+    require('backend/login.php');
+    ?>
+    <?php
         // If user signed up successfully, show toast.
 
     ?>
@@ -48,13 +54,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand topnav" href="index.html">FoxFix</a>
+                <a class="navbar-brand topnav" href="index.php">FoxFix</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="index.php">Home</a>
                     </li>
                     <li>
                         <a href="#">Browse</a>
@@ -62,9 +68,21 @@
                     <li>
                         <a href="#">Contribute</a>
                     </li>
-                    <li>
-                        <a href="">Login</a>
-                    </li>
+                    <?php
+                    // Displays Login if no one is logged in but Logout otherwise
+                    if(!isset($_SESSION['username'])){
+
+                    echo '<li>
+                        <a class="loginsignup" data-opentab="0">Login</a>
+                    </li>';
+                    } else {
+                        echo '<li>
+                        <a href="backend/logout.php">Logged in as ' . $_SESSION["name"] . '. Logout?</a>
+                    </li>';
+
+                    }
+
+                    ?>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -153,5 +171,7 @@
     <script src="js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+        <!-- JS helper functions -->
+    <script src="js/helpers.js"></script>
 </body>
 </html>

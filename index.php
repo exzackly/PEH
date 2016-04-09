@@ -1,8 +1,4 @@
-<?php
-ob_start();
-session_start();
-require('backend/login.php');
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,6 +33,12 @@ require('backend/login.php');
 
 <body>
 
+<?php
+ob_start();
+session_start();
+require('backend/login.php');
+?>
+
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
         <div class="container topnav">
@@ -62,7 +64,9 @@ require('backend/login.php');
                     <li>
                         <a href="#">Contribute</a>
                     </li>
+
                     <?php
+                    // Displays Login if no one is logged in but Logout otherwise
                     if(!isset($_SESSION['username'])){
 
                     echo '<li>
@@ -70,7 +74,7 @@ require('backend/login.php');
                     </li>';
                     } else {
                         echo '<li>
-                        <a>Hello ' . $_SESSION["username"] . '! </a>
+                        <a href="backend/logout.php">Logged in as ' . $_SESSION["name"] . '. Logout?</a>
                     </li>';
 
                 }
@@ -99,114 +103,7 @@ require('backend/login.php');
                             <li>
                                 <a class="btn btn-default btn-lg loginsignup" data-opentab="0"><i class="fa fa-sign-in fa-fw"></i> <span class="network-name">Login</span></a>
 
-                                    <div class="modal fade bs-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                                      <div class="modal-dialog modal-sm">
-                                        <div class="modal-content">
-                                            <br>
-                                            <div class="bs-example bs-example-tabs">
-                                                <ul id="myTab" class="nav nav-tabs">
-                                                  <li class="active"><a href="#login" data-toggle="tab">Log In</a></li>
-                                                  <li class=""><a href="#signup" data-toggle="tab">Register</a></li>
-                                                </ul>
-                                            </div>
-                                          <div class="modal-body">
-                                            <div id="myTabContent" class="tab-content">
-                                            <div class="tab-pane fade active in" id="login">
-                                                <form class="form-horizontal" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method='post'>
-                                                <fieldset>
-                                                <!-- Sign In Form -->
 
-                                                <!-- Text input-->
-                                                <div class="control-group">
-                                                  <label class="control-label" for="userid">Email:</label>
-                                                  <div class="controls">
-                                                    <input required="" id="email" name="email" type="text" class="form-control" placeholder="you@email.com" class="input-medium" required="">
-                                                  </div>
-                                                </div>
-
-                                                <!-- Password input-->
-                                                <div class="control-group">
-                                                  <label class="control-label" for="password">Password:</label>
-                                                  <div class="controls">
-                                                    <input required="" id="password" name="password" class="form-control" type="password" placeholder="********" class="input-medium">
-                                                  </div>
-                                                </div>
-
-                                                <!-- Multiple Checkboxes (inline) -->
-                                                <div class="control-group">
-                                                  <label class="control-label" for="rememberme"></label>
-                                                  <div class="controls">
-                                                    <label class="checkbox inline" for="rememberme-0">
-                                                      <input type="checkbox" name="rememberme" id="rememberme-0" value="Remember me">
-                                                      Remember me
-                                                    </label>
-                                                  </div>
-                                                </div>
-
-                                                <!-- Button -->
-                                                <div class="control-group">
-                                                  <label class="control-label" for="login"></label>
-                                                  <div class="controls">
-                                                    <button id="signin" name="login" class="btn btn-success">Sign In</button>
-                                                  </div>
-                                                </div>
-                                                </fieldset>
-                                                </form>
-                                            </div>
-                                            <div class="tab-pane fade" id="signup">
-                                                <!--<form class="form-horizontal">
-                                                <fieldset>-->
-                                                <!-- Sign Up Form -->
-                                                <!-- Text input
-                                                <<div class="control-group">
-                                                  <label class="control-label" for="Email">Email:</label>
-                                                  <div class="controls">
-                                                    <input id="Email" name="Email" class="form-control" type="text" placeholder="JoeSixpack@sixpacksrus.com" class="input-large" required="">
-                                                  </div>
-                                                </div>
-                                                
-                                                <!-- Password input
-                                                <div class="control-group">
-                                                  <label class="control-label" for="password">Password:</label>
-                                                  <div class="controls">
-                                                    <input id="password" name="password" class="form-control" type="password" placeholder="********" class="input-large" required="">
-                                                    <em>1-8 Characters</em>
-                                                  </div>
-                                                </div>
-                                                
-                                                <!-- Text input
-                                                <div class="control-group">
-                                                  <label class="control-label" for="reenterpassword">Re-Enter Password:</label>
-                                                  <div class="controls">
-                                                    <input id="reenterpassword" class="form-control" name="reenterpassword" type="password" placeholder="********" class="input-large" required="">
-                                                  </div>
-                                                </div>
-                                            -->
-
-                                            <div class="control-group">
-                                                In order to begin submitting your great ideas to improve the Marist community, you first need to quickly make an account.
-                                            </div>
-                                                
-                                                <!-- Button -->
-                                                <div class="control-group">
-                                                  <label class="control-label" for="confirmsignup"></label>
-                                                  <div class="controls">
-                                                    <a id="confirmsignup" class="btn btn-success" href="signup.php">Sign Up</a>
-                                                  </div>
-                                                </div>
-                                                <!--</fieldset>
-                                                </form>
-                                          </div>
-                                        </div>
-                                          </div>-->
-                                          <div class="modal-footer">
-                                          <center>
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                            </center>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div> </div> </div> </div>
                     </li>
 
                             <li>
@@ -358,14 +255,8 @@ require('backend/login.php');
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
-    <script type="text/javascript">
-    // Opens the correct modal tab for login and signup
-    $('.loginsignup').on('click', function() {
-    whichtab = $(this).data('opentab');
-    $('#myModal').modal('show');
-    $('.nav-tabs li:eq('+whichtab+') a').tab('show');
-});
-    </script>
+    <!-- JS helper functions -->
+    <script src="js/helpers.js"></script>
 
 
 </body>
