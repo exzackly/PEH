@@ -70,7 +70,7 @@ require('backend/login.php');
                     if(!isset($_SESSION['username'])){
 
                     echo '<li>
-                        <a class="loginsignup" data-opentab="0">Login</a>
+                        <a data-toggle="modal" data-target=".bs-modal-sm">Login</a>
                     </li>';
                     } else {
                         echo '<li>
@@ -101,13 +101,13 @@ require('backend/login.php');
                         <hr class="intro-divider">
                         <ul class="list-inline intro-social-buttons">
                             <li>
-                                <a class="btn btn-default btn-lg loginsignup" data-opentab="0"><i class="fa fa-sign-in fa-fw"></i> <span class="network-name">Login</span></a>
+                                <a class="btn btn-default btn-lg loginsignup" data-toggle="modal" data-target=".bs-modal-sm"><i class="fa fa-sign-in fa-fw"></i> <span class="network-name">Login</span></a>
 
 
                     </li>
 
                             <li>
-                                <a class="btn btn-default btn-lg loginsignup" data-opentab="1"><i class="fa fa-plus fa-fw"></i> <span class="network-name">Sign Up</span></a>
+                                <a class="btn btn-default btn-lg loginsignup" href="signup.php"><i class="fa fa-plus fa-fw"></i> <span class="network-name">Sign Up</span></a>
                             </li>
                             <li>
                                 <a href="#" class="btn btn-default btn-lg"><i class="fa fa-search fa-fw"></i> <span class="network-name">Browse</span></a>
@@ -254,9 +254,6 @@ require('backend/login.php');
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-
-    <!-- JS helper functions -->
-    <script src="js/helpers.js"></script>
 
 
 </body>
