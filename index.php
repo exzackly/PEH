@@ -17,6 +17,7 @@
 
     <!-- Custom CSS -->
     <link href="css/landing-page.css" rel="stylesheet">
+    
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -62,7 +63,7 @@ require('backend/login.php');
                         <a href="#">Browse</a>
                     </li>
                     <li>
-                        <a href="#">Contribute</a>
+                        <a href="backend/checkLoggedIn.php">Contribute</a>
                     </li>
 
                     <?php

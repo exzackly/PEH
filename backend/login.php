@@ -4,6 +4,10 @@ require_once("dbconn.php");
 
 $msg = '';
 
+if(isset($_GET['loggedIn'])){
+   echo '<script>toastr.error("You must be logged in to contribute ideas", "Please Log In");</script>';
+}
+
 if (isset($_POST['login'])) {
 
    $email = $_POST['email'];
@@ -16,6 +20,7 @@ if (isset($_POST['login'])) {
 
       while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
          $_SESSION['name'] = $row['name'];
+         $_SESSION['uid'] = $row['uid'];
       }
 
       $_SESSION['valid'] = true;
