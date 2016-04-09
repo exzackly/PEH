@@ -15,11 +15,16 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/login-page.css" rel="stylesheet">
+    <link href="css/signup-page.css" rel="stylesheet">
+
+    <!--Toast Library-->
+    <link href="toastr.css" rel="stylesheet"/>
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <script src="toastr.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -31,7 +36,10 @@
 </head>
 
 <body>
+    <?php
+        // If user signed up successfully, show toast.
 
+    ?>
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
         <div class="container topnav">
@@ -49,13 +57,13 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="#about">Home</a>
+                        <a href="index.html">Home</a>
                     </li>
                     <li>
-                        <a href="#services">Signup</a>
+                        <a href="#">Signup</a>
                     </li>
                     <li>
-                        <a href="#contact">Login</a>
+                        <a href="">Login</a>
                     </li>
                 </ul>
             </div>
@@ -89,30 +97,30 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-sm-6">
-                    <form>
+                    <form action="backend/addUser.php" method="GET" id="signup">
                       <fieldset class="form-group">
-                        <label for="exampleInputEmail1">Name</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Your name here">
+                        <label for="Name">Name</label>
+                        <input type="name" class="form-control" name="name" id="Name" placeholder="Your name here">
                         <small class="text-muted">First name and last name.</small>
                       </fieldset>
                       <fieldset class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                        <label for="Email">Email address</label>
+                        <input type="email" class="form-control" name="email" id="Email" placeholder="Enter email">
                         <small class="text-muted">This will be your username to log in.</small>
                       </fieldset>
                       <fieldset class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        <label for="Password">Password</label>
+                        <input type="password" class="form-control" name="pwd" id="Password" placeholder="Password">
                       </fieldset>
                       <fieldset class="form-group">
-                        <label for="exampleSelect1">I am a:</label>
-                        <select class="form-control" id="exampleSelect1">
+                        <label for="iAmA">I am a:</label>
+                        <select class="form-control" name="type" id="iAmA">
                           <option>Student</option>
                           <option>Faculty Member</option>
                           <option>Employee</option>
                         </select>
                       </fieldset>
-                      <button type="submit" class="btn btn-primary">Submit</button>
+                      <button type="submit" form="signup" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
             </div>
