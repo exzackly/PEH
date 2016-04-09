@@ -15,6 +15,6 @@ $sql = "SELECT *, COUNT(Likes.iid) as likeCount FROM Improvements INNER JOIN Lik
 $result = executeSQL($conn, $sql);
 
 while ($row = $result->fetch_array(MYSQL_ASSOC)) {
-	echo $row['iid'] . "," .  $row['name'] . "," . $row['description'] . "," . $row['lifecyclePhase'] . "," . $row['likeCount'] . ",[" . substr($comments, 0, -1) . "]";
+	echo $row['name'] . "," . $row['description'] . "," . $row['lifecyclePhase'] . "," . $row['likeCount'] . ",[" . substr($comments, 0, -1) . "]";
 }
 ?>
