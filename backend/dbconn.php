@@ -61,7 +61,7 @@ function createDBandTables($conn, $dbname) {
 	iid INT(6) UNSIGNED,
 	comment VARCHAR(300) NOT NULL,
 	reg_date TIMESTAMP,
-	PRIMARY KEY (uid, iid),
+	PRIMARY KEY (uid, iid, reg_date),
 	FOREIGN KEY (uid) REFERENCES Users(uid),
 	FOREIGN KEY (iid) REFERENCES Improvements(iid)
 	) ENGINE=INNODB;";

@@ -11,4 +11,6 @@ $sql = "INSERT INTO Comments (uid, iid, comment) VALUES ($user, $improvement, '$
 executeSQL($conn, $sql);
 
 echo "Comment Added";
+
+header('Location: ../idea.php?iid='.$improvement);
 ?>

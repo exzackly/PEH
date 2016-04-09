@@ -2,15 +2,6 @@ import urllib.request
 import random
 import string
 
-# Add random improvements
-for i in range(21):
-	name = ''.join(random.choice(string.ascii_letters) for i in range(7))
-	desc = ''.join(random.choice(string.ascii_letters) for i in range(21))
-	lcp = random.choice(['idea', 'review', 'submission', 'decision', 'implementation'])
-	urllib.request.urlopen('http://exzackly7.com/PEH/backend/addImprovement.php?name=' + name + '&desc=' + desc + '&lcp=' + lcp)
-	print("Added improvement " + str(i))
-print("Improvements added")
-
 # Add random Users
 for i in range(21):
 	name = ''.join(random.choice(string.ascii_letters) for i in range(7))
@@ -20,6 +11,15 @@ for i in range(21):
 	urllib.request.urlopen('http://exzackly7.com/PEH/backend/addUser.php?name=' + name + '&type=' + type + '&email=' + email + '&pwd=' + password)
 	print("Added user " + str(i))
 print("Users added")
+
+# Add random improvements
+for i in range(21):
+	name = ''.join(random.choice(string.ascii_letters) for i in range(7))
+	desc = ''.join(random.choice(string.ascii_letters) for i in range(21))
+	lcp = random.choice(['idea', 'review', 'submission', 'decision', 'implementation'])
+	urllib.request.urlopen('http://exzackly7.com/PEH/backend/addImprovement.php?name=' + name + '&desc=' + desc + '&lcp=' + lcp)
+	print("Added improvement " + str(i))
+print("Improvements added")
 
 # Add random Likes
 for i in range(100):

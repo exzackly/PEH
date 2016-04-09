@@ -5,10 +5,10 @@ if (isset($_GET['iid'])) {
 	$iid = $_GET['iid'];
 
 	$comments = "";
-	$sql = "SELECT * FROM Comments INNER JOIN Users ON Users.uid = Comments.uid WHERE Comments.iid = $iid";
+	$sql = "SELECT * FROM Comments INNER JOIN Users ON Users.uid = Comments.uid WHERE Comments.iid = $iid ORDER BY Comments.reg_date DESC";
 	$result = executeSQL($conn, $sql);
 	while ($row = $result->fetch_array(MYSQL_ASSOC)) {
-		$comments .= $row['name'] . ":" . $row['comment'] . ";";
+		$comments .= $row['name'] . ":" . $row['comment'] . ":" . $row['reg_date'] . ";";
 	}
 
 	$sql = "SELECT *, COUNT(Likes.iid) as likeCount, Improvements.name as name, Users.name as user 
