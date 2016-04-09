@@ -17,6 +17,7 @@
 
     <!-- Custom CSS -->
     <link href="css/landing-page.css" rel="stylesheet">
+    
 
     <!-- Toasting css -->
     <link href="css/toastr.min.css" rel="stylesheet"/>
@@ -65,7 +66,8 @@ require('backend/login.php');
                         <a href="#">Browse</a>
                     </li>
                     <li>
-                        <a href="contribute.php">Contribute</a>
+                        <a href="backend/checkLoggedIn.php">Contribute</a>
+
                     </li>
 
                     <?php

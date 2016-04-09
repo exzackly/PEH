@@ -73,16 +73,16 @@
                     if(!isset($_SESSION['username'])){
 
                     echo '<li>
-                        <a class="loginsignup" data-opentab="0">Login</a>
+                        <a data-toggle="modal" data-target=".bs-modal-sm">Login</a>
                     </li>';
                     } else {
                         echo '<li>
                         <a href="backend/logout.php">Logged in as ' . $_SESSION["name"] . '. Logout?</a>
                     </li>';
 
-                    }
+                }
 
-                    ?>
+                ?>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

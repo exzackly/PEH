@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Fox Fix</title>
+    <title>FoxFix</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -31,6 +31,12 @@
 </head>
 
 <body>
+
+<?php
+ob_start();
+session_start();
+require('backend/login.php');
+?>
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
         <div class="container topnav">
@@ -42,20 +48,33 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand topnav" href="#">Fox Fix</a>
+                <a class="navbar-brand topnav" href="index.php">FoxFix</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="index.php">Home</a>
                     </li>
                     <li>
-                        <a href="#">Signup</a>
+                        <a href="#">Browse</a>
                     </li>
-                    <li>
-                        <a href="">Login</a>
-                    </li>
+
+                    <?php
+                    // Displays Login if no one is logged in but Logout otherwise
+                    if(!isset($_SESSION['username'])){
+
+                    echo '<li>
+                        <a data-toggle="modal" data-target=".bs-modal-sm">Login</a>
+                    </li>';
+                    } else {
+                        echo '<li>
+                        <a href="backend/logout.php">Logged in as ' . $_SESSION["name"] . '. Logout?</a>
+                    </li>';
+
+                    }
+
+                    ?>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
