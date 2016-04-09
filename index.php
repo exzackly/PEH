@@ -18,6 +18,9 @@
     <!-- Custom CSS -->
     <link href="css/landing-page.css" rel="stylesheet">
 
+    <!-- Toasting css -->
+    <link href="css/toastr.min.css" rel="stylesheet"/>
+
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
@@ -252,8 +255,27 @@ require('backend/login.php');
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
+    <!-- Helper file -->
+    <script src="js/helpers.js"></script>
+
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+
+    <!--Toasting code-->
+    <script src="js/toastr.min.js"></script>
+
+    <script type="text/javascript">
+    // Toasts user when certain actions performed:
+
+        $(document).ready(function() {
+        var status = getUrlParameter('status');
+        if(status == "signup"){
+            toastr.success('Signup completed successfully!', 'Success!');
+        } else if(status == "additem"){
+            toastr.success('Item added successfully!', 'Success!');
+        }
+    });
+    </script>
 
 
 </body>
