@@ -22,7 +22,7 @@ h6 {
 }
 
 .topnav {
-    font-size: 14px; 
+    font-size: 20px; 
 }
 
 .lead {
@@ -43,6 +43,10 @@ h6 {
     color: #f8f8f8;
     padding-top: 20%;
     padding-bottom: 20%;
+}
+
+.intro-message #foxfix {
+    color: #ff0000;
 }
 
 .intro-message > h1 {
@@ -168,4 +172,8 @@ footer {
 
 p.copyright {
     margin: 15px 0 0;
+}
+
+.modal {
+    color: #000000;
 }

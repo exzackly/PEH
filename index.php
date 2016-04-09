@@ -1,3 +1,8 @@
+<?php
+ob_start();
+session_start();
+require('backend/login.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,14 +54,28 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="#about">About</a>
+                        <a href="#">Home</a>
                     </li>
                     <li>
-                        <a href="#services">Browse</a>
+                        <a href="#">Browse</a>
                     </li>
                     <li>
+                        <a href="#">Contribute</a>
+                    </li>
+                    <?php
+                    if(!isset($_SESSION['username'])){
+
+                    echo '<li>
                         <a class="loginsignup" data-opentab="0">Login</a>
-                    </li>
+                    </li>';
+                    } else {
+                        echo '<li>
+                        <a>Hello ' . $_SESSION["username"] . '! </a>
+                    </li>';
+
+                }
+
+                ?>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -73,8 +92,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="intro-message">
-                        <h1>Welcome to FoxFix</h1>
-                        <h3>Making Marist More Excellent, One Idea at a Time</h3>
+                        <h1>Welcome to <span id="foxfix">FoxFix</span></h1>
+                        <h3>Making Marist Great Again, One Idea at a Time</h3>
                         <hr class="intro-divider">
                         <ul class="list-inline intro-social-buttons">
                             <li>
@@ -93,22 +112,23 @@
                                           <div class="modal-body">
                                             <div id="myTabContent" class="tab-content">
                                             <div class="tab-pane fade active in" id="login">
-                                                <form class="form-horizontal">
+                                                <form class="form-horizontal" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method='post'>
                                                 <fieldset>
                                                 <!-- Sign In Form -->
+
                                                 <!-- Text input-->
                                                 <div class="control-group">
                                                   <label class="control-label" for="userid">Email:</label>
                                                   <div class="controls">
-                                                    <input required="" id="email" name="email" type="text" class="form-control" placeholder="JoeSixpack" class="input-medium" required="">
+                                                    <input required="" id="email" name="email" type="text" class="form-control" placeholder="you@email.com" class="input-medium" required="">
                                                   </div>
                                                 </div>
 
                                                 <!-- Password input-->
                                                 <div class="control-group">
-                                                  <label class="control-label" for="passwordinput">Password:</label>
+                                                  <label class="control-label" for="password">Password:</label>
                                                   <div class="controls">
-                                                    <input required="" id="passwordinput" name="passwordinput" class="form-control" type="password" placeholder="********" class="input-medium">
+                                                    <input required="" id="password" name="password" class="form-control" type="password" placeholder="********" class="input-medium">
                                                   </div>
                                                 </div>
 
@@ -125,27 +145,27 @@
 
                                                 <!-- Button -->
                                                 <div class="control-group">
-                                                  <label class="control-label" for="signin"></label>
+                                                  <label class="control-label" for="login"></label>
                                                   <div class="controls">
-                                                    <button id="signin" name="signin" class="btn btn-success">Sign In</button>
+                                                    <button id="signin" name="login" class="btn btn-success">Sign In</button>
                                                   </div>
                                                 </div>
                                                 </fieldset>
                                                 </form>
                                             </div>
                                             <div class="tab-pane fade" id="signup">
-                                                <form class="form-horizontal">
-                                                <fieldset>
+                                                <!--<form class="form-horizontal">
+                                                <fieldset>-->
                                                 <!-- Sign Up Form -->
-                                                <!-- Text input-->
-                                                <div class="control-group">
+                                                <!-- Text input
+                                                <<div class="control-group">
                                                   <label class="control-label" for="Email">Email:</label>
                                                   <div class="controls">
                                                     <input id="Email" name="Email" class="form-control" type="text" placeholder="JoeSixpack@sixpacksrus.com" class="input-large" required="">
                                                   </div>
                                                 </div>
                                                 
-                                                <!-- Password input-->
+                                                <!-- Password input
                                                 <div class="control-group">
                                                   <label class="control-label" for="password">Password:</label>
                                                   <div class="controls">
@@ -154,26 +174,31 @@
                                                   </div>
                                                 </div>
                                                 
-                                                <!-- Text input-->
+                                                <!-- Text input
                                                 <div class="control-group">
                                                   <label class="control-label" for="reenterpassword">Re-Enter Password:</label>
                                                   <div class="controls">
                                                     <input id="reenterpassword" class="form-control" name="reenterpassword" type="password" placeholder="********" class="input-large" required="">
                                                   </div>
                                                 </div>
+                                            -->
+
+                                            <div class="control-group">
+                                                In order to begin submitting your great ideas to improve the Marist community, you first need to quickly make an account.
+                                            </div>
                                                 
                                                 <!-- Button -->
                                                 <div class="control-group">
                                                   <label class="control-label" for="confirmsignup"></label>
                                                   <div class="controls">
-                                                    <button id="confirmsignup" name="confirmsignup" class="btn btn-success">Sign Up</button>
+                                                    <a id="confirmsignup" class="btn btn-success" href="signup.php">Sign Up</a>
                                                   </div>
                                                 </div>
-                                                </fieldset>
+                                                <!--</fieldset>
                                                 </form>
                                           </div>
                                         </div>
-                                          </div>
+                                          </div>-->
                                           <div class="modal-footer">
                                           <center>
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -181,7 +206,7 @@
                                           </div>
                                         </div>
                                       </div>
-                                    </div>
+                                    </div> </div> </div> </div>
                     </li>
 
                             <li>
