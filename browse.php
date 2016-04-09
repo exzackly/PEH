@@ -39,7 +39,7 @@ require_once('backend/session.php');
                     <?php					
 					
 					$improvementsSource = file_get_contents('http://www.exzackly7.com/PEH/backend/displayImprovements.php');
-					
+					if ($improvementsSource != "") {
             		foreach (explode(';', $improvementsSource) as $improvement) {
 
                     $improvementArr = explode(',', $improvement);
@@ -78,7 +78,7 @@ require_once('backend/session.php');
                         <!-- /.container -->
 
                     </div>';
-					}
+					}}
                     ?>
                                 
 

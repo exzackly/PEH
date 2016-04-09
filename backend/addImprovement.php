@@ -3,7 +3,7 @@ session_start();
 require_once("dbconn.php");
 
 $name = $_GET['name'];
-$description = $_GET['desc'];
+$description = str_replace("'","\'",$_GET['desc']);
 $lifecyclePhase = $_GET['lcp'];
 if (isset($_SESSION['uid'])) {
 	$uid = $_SESSION['uid'];

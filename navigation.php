@@ -26,6 +26,13 @@ echo '
 					<a href="contribute.php">Contribute</a>
 
 				</li>';
+				if(isset($_SESSION['type'])){
+					echo '
+					<li>
+					<a href="review.php">Review</a>
+					</li>
+					';
+				}
 				// Displays Login if no one is logged in but Logout otherwise
 				if(!isset($_SESSION['uid'])){
 					echo '<li>

@@ -16,6 +16,7 @@ require_once("header.php");
 		$likes = $outputArr[3];
 		$commentsArr = [];
 		foreach (explode(';', $outputArr[4]) as $out) {
+			if ($out[1] == "]") {break;} 
 			$outSplit = explode(':', $out);
 			$commentsArr[] = [str_replace("[","",$outSplit[0]), $outSplit[1], str_replace("]","",$outSplit[2])];
 		}

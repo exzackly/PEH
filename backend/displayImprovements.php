@@ -11,10 +11,10 @@ if (isset($_GET['iid'])) {
 		$comments .= $row['name'] . ":" . $row['comment'] . ":" . $row['reg_date'] . ";";
 	}
 
-	$sql = "SELECT *, COUNT(Likes.iid) as likeCount, Improvements.name as name, Users.name as user 
-			FROM Improvements INNER JOIN Likes ON Improvements.iid = Likes.iid 
-							  INNER JOIN Users ON Improvements.uid = Users.uid
-							  WHERE Improvements.iid = $iid";
+	$sql = "SELECT *, COUNT(Likes.iid) as likeCount, Improvements.name as name, Users.name as user FROM Improvements
+			LEFT JOIN Likes ON Improvements.iid = Likes.iid 
+			LEFT JOIN Users ON Improvements.uid = Users.uid
+				WHERE Improvements.iid = $iid";
 
 	$result = executeSQL($conn, $sql);
 
@@ -22,9 +22,10 @@ if (isset($_GET['iid'])) {
 		echo $row['name'] . "," . $row['description'] . "," . $row['lifecyclePhase'] . "," . $row['likeCount'] . ",[" . substr($comments, 0, -1) . "]," . $row['user'];
 	}
 } else {
-	$sql = "SELECT *, COUNT(*) as likeCount, Improvements.name as name, Users.name as user FROM Improvements INNER JOIN Likes ON Improvements.iid = Likes.iid 
-															  INNER JOIN Users ON Improvements.uid = Users.uid 
-															  GROUP BY Improvements.name ORDER BY likeCount DESC";
+	$sql = "SELECT *, COUNT(Likes.iid) as likeCount, Improvements.name as name, Users.name as user, Improvements.iid as iid FROM Improvements 
+			LEFT JOIN Likes ON Improvements.iid = Likes.iid
+			INNER JOIN Users ON Improvements.uid = Users.uid 
+				GROUP BY Improvements.name ORDER BY likeCount DESC";
 
 	$result = executeSQL($conn, $sql);
 
