@@ -11,21 +11,26 @@ if (isset($_GET['iid'])) {
 		$comments .= $row['name'] . ":" . $row['comment'] . ";";
 	}
 
-	$sql = "SELECT *, COUNT(Likes.iid) as likeCount FROM Improvements INNER JOIN Likes ON Improvements.iid = Likes.iid WHERE Improvements.iid = $iid";
+	$sql = "SELECT *, COUNT(Likes.iid) as likeCount, Improvements.name as name, Users.name as user 
+			FROM Improvements INNER JOIN Likes ON Improvements.iid = Likes.iid 
+							  INNER JOIN Users ON Improvements.uid = Users.uid
+							  WHERE Improvements.iid = $iid";
 
 	$result = executeSQL($conn, $sql);
 
 	while ($row = $result->fetch_array(MYSQL_ASSOC)) {
-		echo $row['name'] . "," . $row['description'] . "," . $row['lifecyclePhase'] . "," . $row['likeCount'] . ",[" . substr($comments, 0, -1) . "]";
+		echo $row['name'] . "," . $row['description'] . "," . $row['lifecyclePhase'] . "," . $row['likeCount'] . ",[" . substr($comments, 0, -1) . "]," . $row['user'];
 	}
 } else {
-	$sql = "SELECT *, COUNT(*) as likeCount FROM Improvements INNER JOIN Likes ON Improvements.iid = Likes.iid GROUP BY name ORDER BY likeCount DESC";
+	$sql = "SELECT *, COUNT(*) as likeCount, Improvements.name as name, Users.name as user FROM Improvements INNER JOIN Likes ON Improvements.iid = Likes.iid 
+															  INNER JOIN Users ON Improvements.uid = Users.uid 
+															  GROUP BY Improvements.name ORDER BY likeCount DESC";
 
 	$result = executeSQL($conn, $sql);
 
 	$improvements = "";
 		while ($row = $result->fetch_array(MYSQL_ASSOC)) {
-			$improvements .= $row['iid'] . "," . $row['name'] . "," . $row['description'] . "," . $row['lifecyclePhase'] . "," . $row['likeCount'] . ";";
+			$improvements .= $row['iid'] . "," . $row['name'] . "," . $row['description'] . "," . $row['lifecyclePhase'] . "," . $row['likeCount'] . "," . $row['user'] . ";";
 		}
 	echo substr($improvements, 0, -1);
 }

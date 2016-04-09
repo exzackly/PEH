@@ -21,7 +21,7 @@ require('backend/session.php');
             <div class="row">
                 <div class="col-lg-12">
                     <div class="intro-message">
-                        <h1>Contribute</h1>
+                        <h1 style="color: red">Contribute</h1>
                         <h3>Give us your ideas!
                     </div>
                 </div>

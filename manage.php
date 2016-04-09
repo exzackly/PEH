@@ -21,7 +21,7 @@ require('backend/session.php');
             <div class="row">
                 <div class="col-lg-12">
                     <div class="intro-message">
-                        <h1>Manage</h1>
+                        <h1 style="color:red">Manage</h1>
                         <h3>Ideas being considered...</h3>
                     </div>
                 </div>
@@ -52,9 +52,22 @@ require('backend/session.php');
         foreach (explode(';', $improvementsSource) as $improvement) {  
         if($cutoff <= 0){
             break;
-        }     
-    echo '<div class="content-section-a">
+        }
+        // get current life cycle phase and move up one to display on button:
+        $lcp = ucfirst(explode(',', $improvement)[3]);
 
+        if($lcp == "Idea"){
+            $lcp = "Review";
+        } else if($lcp == "Review"){
+            $lcp = "Submission";
+        } else if($lcp == "Submission"){
+            $lcp = "Decision";
+        } else if($lcp == "Decision"){
+            $lcp = "Implementation";
+        }
+
+    echo '<div class="content-section-a">
+        <form action="backend/pushLCP.php" method="GET">
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 col-sm-6">
@@ -63,11 +76,21 @@ require('backend/session.php');
                     <p class="lead">'.explode(',', $improvement)[2].'</p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                    <h1>'.explode(',', $improvement)[4].' <i class="fa fa-heart"></i><span><input type="submit" value="Push to '. explode(',', $improvement)[3] .'></h1>
+                    <h1>'.explode(',', $improvement)[4].' <i class="fa fa-heart"></i></h1>
                 </div>
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6">';
+                if(explode(',', $improvement)[3] == "implementation"){
+                    echo '<i style="color:green" class="fa fa-check"></i><span style="color:green">  Being Implemented</span> ';
+                } else {
+                    echo '<input type="hidden" name="lcp" value="'. lcfirst($lcp) .'">';
+                    echo '<input type="hidden" name="iid" value="'. explode(',', $improvement)[0] .'">';
+                    echo '<span><input type="submit" value="Push to '. $lcp .'"></span>';
+                }
+                echo '</div>
             </div>
 
         </div>
+        </form>
         <!-- /.container -->
 
     </div>';

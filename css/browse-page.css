@@ -171,3 +171,11 @@ footer {
 p.copyright {
     margin: 15px 0 0;
 }
+
+.btn.disabled, .btn[disabled] {
+    cursor: default;
+}
+
+.btn.disabled, .btn[disabled] i{
+    color: #ff0000;
+}

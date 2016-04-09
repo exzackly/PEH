@@ -5,7 +5,11 @@ require_once("dbconn.php");
 $name = $_GET['name'];
 $description = $_GET['desc'];
 $lifecyclePhase = $_GET['lcp'];
-$uid = $_SESSION['uid'];
+if (isset($_SESSION['uid'])) {
+	$uid = $_SESSION['uid'];
+} else {
+	$uid = 1;
+}
 
 $sql = "INSERT INTO Improvements (uid, name, description, lifecyclePhase) VALUES ($uid, '$name', '$description', '$lifecyclePhase')";
 

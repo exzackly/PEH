@@ -66,7 +66,7 @@ require_once("header.php");
             <div class="row">
                 <div class="col-lg-12">
                     <div class="intro-message">
-                        <h1>Signup</h1>
+                        <h1 style="color: red">Signup</h1>
                         <h3>Enter your info below:
                     </div>
                 </div>

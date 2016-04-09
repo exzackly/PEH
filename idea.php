@@ -7,16 +7,27 @@ require_once("header.php");
     <?php
     require_once('backend/session.php');
 
-        // Open the file using the HTTP headers set above
         $output = file_get_contents('http://www.exzackly7.com/PEH/backend/displayImprovements.php?iid='.$_GET['iid']);
-        echo $output;
 
-        $outputArr = explode(',', $output);
+		$outputArr = explode(',', $output);
 
         $name = $outputArr[0];
 		$desc = $outputArr[1];
 		$likes = $outputArr[3];
+		$commentsArr = explode(';', $outputArr[4]);
+        $user = $outputArr[5];
+		$userLikes = false;
+		
+		print_r($commentsArr);
+		
+		$sql = "SELECT * FROM Likes WHERE uid='" . $_SESSION['uid'] ."' AND iid='" . $_GET['iid'] . "'";
+		$result = executeSQL($conn, $sql);
 
+		if($result){
+		  while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+			$userLikes = true;
+		  }
+		}
     ?>
     
 	<?php require_once("navigation.php"); ?>
@@ -30,7 +41,7 @@ require_once("header.php");
                 <div class="col-lg-12">
                     <div class="intro-message">
                         <h1><?php echo $name; ?></h1>
-                        <h3>See current ideas!</h3>
+                        <h3>By <?php echo $user; ?></h3>
                     </div>
                 </div>
             </div>
@@ -47,13 +58,24 @@ require_once("header.php");
             <div class="row">
                 <div class="col-lg-5 col-sm-6">
                     <div class="clearfix"></div>
-					<h1 class="section-heading"><?php echo $name; ?></h1>
-                    <h2 class="section-heading"><?php echo $desc; ?></h2>
+					<h1 class="section-heading"><?php echo $name; ?>
                     <?php
                     
-                    echo '<a class="btn btn-default btn-lg" href="backend/addLike.php?uid='. $_SESSION['uid'] .'&iid=' . $_GET['iid'] . '"><span class="network-name">Like <i class="fa fa-heart fa-fw"></i>'.$likes.'</span></a>';
+                    echo '<button class="btn btn-default btn-lg" onclick="location.href=\'backend/addLike.php?uid='. $_SESSION['uid'] .'&iid=' . $_GET['iid'] . '\'"';
+
+                    if($userLikes)
+                        echo 'disabled';
                     
-                    ?>
+                    echo '><span class="network-name">Like';
+
+                    if($userLikes)
+                        echo 'd';
+
+                    echo ' <i class="fa fa-heart fa-fw"></i>' . $likes . '</span></button>';
+                    
+                    ?></h1>
+                    <h2 class="section-heading"><?php echo $desc; ?></h2>
+
                     <p class="lead"></p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">

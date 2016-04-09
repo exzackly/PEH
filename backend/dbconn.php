@@ -21,18 +21,6 @@ function createDBandTables($conn, $dbname) {
 
 	$conn->select_db($dbname);
 
-	//create Improvements table if not exist
-	$sql = "CREATE TABLE IF NOT EXISTS Improvements (
-	iid INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-	uid INT(6) UNSIGNED NOT NULL,
-	name VARCHAR(100) NOT NULL,
-	description VARCHAR(300) NOT NULL,
-	lifecyclePhase VARCHAR(30) NOT NULL,
-	reg_date TIMESTAMP,
-	FOREIGN KEY (uid) REFERENCES Users(uid)
-	) ENGINE=INNODB;";
-	executeSQL($conn, $sql);
-	
 	//create Users table if not exist
 	$sql = "CREATE TABLE IF NOT EXISTS Users (
 	uid INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -44,6 +32,18 @@ function createDBandTables($conn, $dbname) {
 	) ENGINE=INNODB;";
 	executeSQL($conn, $sql);
 	
+	//create Improvements table if not exist
+	$sql = "CREATE TABLE IF NOT EXISTS Improvements (
+	iid INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	uid INT(6) UNSIGNED NOT NULL,
+	name VARCHAR(100) NOT NULL,
+	description VARCHAR(300) NOT NULL,
+	lifecyclePhase VARCHAR(30) NOT NULL,
+	reg_date TIMESTAMP,
+	FOREIGN KEY (uid) REFERENCES Users(uid)
+	) ENGINE=INNODB;";
+	executeSQL($conn, $sql);
+
 	//create Likes table if not exist
 	$sql = "CREATE TABLE IF NOT EXISTS Likes (
 	uid INT(6) UNSIGNED,

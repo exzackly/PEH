@@ -19,7 +19,7 @@ require_once('backend/session.php');
             <div class="row">
                 <div class="col-lg-12">
                     <div class="intro-message">
-                        <h1>Browse</h1>
+                        <h1 style="color: red">Browse</h1>
                         <h3>See current ideas!</h3>
                     </div>
                 </div>
@@ -40,28 +40,48 @@ require_once('backend/session.php');
 					
 					$improvementsSource = file_get_contents('http://www.exzackly7.com/PEH/backend/displayImprovements.php');
 					
-		foreach (explode(';', $improvementsSource) as $improvement) {		
-    echo '<div class="content-section-a">
+            		foreach (explode(';', $improvementsSource) as $improvement) {
 
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-5 col-sm-6">
-                    <div class="clearfix"></div>
-                    <a href="idea.php?iid='.explode(',', $improvement)[0].'"><h2 class="section-heading">'.explode(',', $improvement)[1].'</h2></a>
-                    <p class="lead">'.explode(',', $improvement)[2].'</p>
-                </div>
-                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                    <h1>'.explode(',', $improvement)[4].' <i class="fa fa-heart"></i></h1>
-                </div>
-            </div>
+                    $improvementArr = explode(',', $improvement);
+                    $userLikes = false;
+                    
+                    $sql = "SELECT * FROM Likes WHERE uid='" . $_SESSION['uid'] ."' AND iid='" . $improvementArr[0] . "'";
+                    $result = executeSQL($conn, $sql);
 
-        </div>
-        <!-- /.container -->
+                    if($result){
+                      while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                        $userLikes = true;
+                      }		
+                  }
 
-    </div>';
-		}
-	
-					?>
+                    echo '<div class="content-section-a">
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-5 col-sm-6">
+                                    <div class="clearfix"></div>
+                                    <a href="idea.php?iid='.$improvementArr[0].'"><h2 class="section-heading">'.$improvementArr[1].'</h2></a>
+                                    <p class="lead">'.$improvementArr[2].'</p>
+                                </div>
+                                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                                    <h1><button class="btn btn-default btn-lg" onclick="location.href=\'backend/addLike.php?uid='. $_SESSION['uid'] .'&iid=' . $improvementArr[0] . '\'"';
+
+                    if($userLikes) {
+                        echo 'disabled';
+					}
+
+                    echo '>'.$improvementArr[4].' <i class="fa fa-heart"></i></button></h1>';
+                   echo '</div>
+                            </div>
+
+                        </div>
+                        <!-- /.container -->
+
+                    </div>';
+					}
+                    ?>
+                                
+
 	
 	
 	
