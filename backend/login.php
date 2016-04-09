@@ -4,9 +4,6 @@ require_once("dbconn.php");
 
 $msg = '';
 
-if(isset($_GET['loggedIn'])){
-   echo '<script>toastr.error("You must be logged in to contribute ideas", "Please Log In");</script>';
-}
 
 if (isset($_POST['login'])) {
 

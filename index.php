@@ -54,7 +54,7 @@ require('backend/login.php');
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand topnav" href="#">FoxFix</a>
+                <a class="navbar-brand topnav" href="index.php">FoxFix</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -71,7 +71,7 @@ require('backend/login.php');
 
                     <?php
                     // Displays Login if no one is logged in but Logout otherwise
-                    if(!isset($_SESSION['username'])){
+                    if(!isset($_SESSION['uid'])){
 
                     echo '<li>
                         <a data-toggle="modal" data-target=".bs-modal-sm">Login</a>
@@ -274,6 +274,8 @@ require('backend/login.php');
             toastr.success('Signup completed successfully!', 'Success!');
         } else if(status == "additem"){
             toastr.success('Item added successfully!', 'Success!');
+        } else if (status == "notLoggedIn"){
+            toastr.error('You must be logged in to contribute ideas', 'Please Log In', {timeOut:700});
         }
     });
     </script>
