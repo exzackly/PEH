@@ -26,7 +26,13 @@ echo '
 					<a href="contribute.php">Contribute</a>
 
 				</li>';
+				// Checks for admin privileges
 				if(isset($_SESSION['type'])){
+					echo '
+					<li>
+					<a href="manage.php">Manage</a>
+					</li>
+					';
 					echo '
 					<li>
 					<a href="backend/reviewAuth.php">Review</a>

@@ -26,5 +26,5 @@ while true do
 	
 	client.update("There are currently " + num_ideas.to_s + " pending ideas from FoxFix users!")
 	client.update("Top Idea of the Day: " + top)
-	sleep(86400)
+	sleep(86400) # wait a whole day lol
 end

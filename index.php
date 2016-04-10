@@ -71,6 +71,7 @@ require_once("header.php");
                         <hr class="intro-divider">
                         <ul class="list-inline intro-social-buttons">
                         <?php
+                        // Checks user login and displays correct buttons accordingly
                         if(!isset($_SESSION['uid'])){
                             echo '<li>
                                 <a class="btn btn-default btn-lg loginsignup" data-toggle="modal" data-target=".bs-modal-sm"><i class="fa fa-sign-in fa-fw"></i> <span class="network-name">Login</span></a>

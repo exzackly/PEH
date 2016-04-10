@@ -38,13 +38,16 @@ require_once('backend/session.php');
                 <div class="col-lg-12 col-sm-6">
                     <?php					
 					
+                    // Get Improvements from the API
 					$improvementsSource = file_get_contents('http://www.exzackly7.com/PEH/backend/displayImprovements.php');
 					if ($improvementsSource != "") {
             		foreach (explode(';', $improvementsSource) as $improvement) {
 
+                    // Parse improvements
                     $improvementArr = explode('#', $improvement);
                     $userLikes = false;
                     
+                    // Check if the user liked each idea already
                     $sql = "SELECT * FROM Likes WHERE uid='" . $_SESSION['uid'] ."' AND iid='" . $improvementArr[0] . "'";
                     $result = executeSQL($conn, $sql);
 
