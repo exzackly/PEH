@@ -9,7 +9,7 @@ require_once("header.php");
 
         $output = file_get_contents('http://www.exzackly7.com/PEH/backend/displayImprovements.php?iid='.$_GET['iid']);
 
-		$outputArr = explode(',', $output);
+		$outputArr = explode('#', $output);
 
         $name = $outputArr[0];
 		$desc = $outputArr[1];

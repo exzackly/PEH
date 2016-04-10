@@ -54,7 +54,7 @@ require('backend/session.php');
             break;
         }
         // get current life cycle phase and move up one to display on button:
-        $lcp = ucfirst(explode(',', $improvement)[3]);
+        $lcp = ucfirst(explode('#', $improvement)[3]);
 
         if($lcp == "Idea"){
             $lcp = "Review";
@@ -72,18 +72,18 @@ require('backend/session.php');
             <div class="row">
                 <div class="col-lg-5 col-sm-6">
                     <div class="clearfix"></div>
-                    <a href="idea.php?iid='.explode(',', $improvement)[0].'"><h2 class="section-heading">'.explode(',', $improvement)[1].'</h2></a>
-                    <p class="lead">'.explode(',', $improvement)[2].'</p>
+                    <a href="idea.php?iid='.explode('#', $improvement)[0].'"><h2 class="section-heading">'.explode('#', $improvement)[1].'</h2></a>
+                    <p class="lead">'.explode('#', $improvement)[2].'</p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                    <h1>'.explode(',', $improvement)[4].' <i class="fa fa-heart"></i></h1>
+                    <h1>'.explode('#', $improvement)[4].' <i class="fa fa-heart"></i></h1>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">';
-                if(explode(',', $improvement)[3] == "implementation"){
+                if(explode('#', $improvement)[3] == "implementation"){
                     echo '<i style="color:green" class="fa fa-check"></i><span style="color:green">  Being Implemented</span> ';
                 } else {
                     echo '<input type="hidden" name="lcp" value="'. lcfirst($lcp) .'">';
-                    echo '<input type="hidden" name="iid" value="'. explode(',', $improvement)[0] .'">';
+                    echo '<input type="hidden" name="iid" value="'. explode('#', $improvement)[0] .'">';
                     echo '<span><input type="submit" value="Push to '. $lcp .'"></span>';
                 }
                 echo '</div>

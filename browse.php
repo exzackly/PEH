@@ -42,7 +42,7 @@ require_once('backend/session.php');
 					if ($improvementsSource != "") {
             		foreach (explode(';', $improvementsSource) as $improvement) {
 
-                    $improvementArr = explode(',', $improvement);
+                    $improvementArr = explode('#', $improvement);
                     $userLikes = false;
                     
                     $sql = "SELECT * FROM Likes WHERE uid='" . $_SESSION['uid'] ."' AND iid='" . $improvementArr[0] . "'";

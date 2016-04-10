@@ -108,11 +108,11 @@ require_once("header.php");
                 <div class="col-lg-5 col-sm-6">
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
-                    <h2 class="section-heading">What's Hot:<br>Top Ideas of the Week</h2>
-                    <p class="lead"><a href="#">Check out</a> the highest rated ideas of the week- submitted by users like you!</p>
+                    <h2 class="section-heading">What's Hot:<br>FoxFix Twitter Bot</h2>
+                    <p class="lead"><a href="http://www.twitter.com/FoxFixBot">Check out</a> the FoxFix twitter account, which automatically posts top ideas and other info!</p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                    <img class="img-responsive" src="img/light-bulb.png" alt="">
+                    <img class="img-responsive" src="img/marist.png" alt="">
                 </div>
             </div>
 
@@ -134,7 +134,7 @@ require_once("header.php");
                     <p class="lead">Using information gathered by FoxFix, Marist is now rolling out some <a href="#">new improvements.</a></p>
                 </div>
                 <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-                    <img class="img-responsive" src="img/marist.png" alt="">
+                    <img class="img-responsive" src="img/light-bulb.png" alt="">
                 </div>
             </div>
 

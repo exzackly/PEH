@@ -29,7 +29,7 @@ echo '
 				if(isset($_SESSION['type'])){
 					echo '
 					<li>
-					<a href="review.php">Review</a>
+					<a href="backend/reviewAuth.php">Review</a>
 					</li>
 					';
 				}

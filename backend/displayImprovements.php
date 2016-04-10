@@ -19,7 +19,7 @@ if (isset($_GET['iid'])) {
 	$result = executeSQL($conn, $sql);
 
 	while ($row = $result->fetch_array(MYSQL_ASSOC)) {
-		echo $row['name'] . "," . $row['description'] . "," . $row['lifecyclePhase'] . "," . $row['likeCount'] . ",[" . substr($comments, 0, -1) . "]," . $row['user'];
+		echo $row['name'] . "#" . $row['description'] . "#" . $row['lifecyclePhase'] . "#" . $row['likeCount'] . "#[" . substr($comments, 0, -1) . "]#" . $row['user'];
 	}
 } else {
 	$sql = "SELECT *, COUNT(Likes.iid) as likeCount, Improvements.name as name, Users.name as user, Improvements.iid as iid FROM Improvements 
@@ -31,7 +31,7 @@ if (isset($_GET['iid'])) {
 
 	$improvements = "";
 		while ($row = $result->fetch_array(MYSQL_ASSOC)) {
-			$improvements .= $row['iid'] . "," . $row['name'] . "," . $row['description'] . "," . $row['lifecyclePhase'] . "," . $row['likeCount'] . "," . $row['user'] . ";";
+			$improvements .= $row['iid'] . "#" . $row['name'] . "#" . $row['description'] . "#" . $row['lifecyclePhase'] . "#" . $row['likeCount'] . "#" . $row['user'] . ";";
 		}
 	echo substr($improvements, 0, -1);
 }
