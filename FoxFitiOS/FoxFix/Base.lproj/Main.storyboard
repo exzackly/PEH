@@ -24,7 +24,7 @@
                                     <constraint firstAttribute="height" constant="150" id="pri-o2-3cl"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fqs-a6-9eV">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fqs-a6-9eV">
                                 <rect key="frame" x="20" y="224" width="560" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="oZv-J2-rDQ"/>
@@ -33,14 +33,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Noh-Rq-Imd">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Noh-Rq-Imd">
                                 <rect key="frame" x="281" y="284" width="38" height="30"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="login:" destination="ktC-DK-HdD" eventType="touchUpInside" id="Wkp-wC-5Sl"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eB8-MP-NI1">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eB8-MP-NI1">
                                 <rect key="frame" x="20" y="186" width="560" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="icK-ky-95p"/>
@@ -84,7 +84,7 @@
             </objects>
             <point key="canvasLocation" x="982" y="-418"/>
         </scene>
-        <!--Improvements-->
+        <!--Browse-->
         <scene sceneID="jxF-ol-eHO">
             <objects>
                 <tableViewController id="IJr-Nk-cZq" customClass="ViewController" customModule="FoxFix" customModuleProvider="target" sceneMemberID="viewController">
@@ -126,7 +126,7 @@
                             <outlet property="delegate" destination="IJr-Nk-cZq" id="4bM-op-NdE"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Improvements" id="KOS-Yp-xhg">
+                    <navigationItem key="navigationItem" title="Browse" id="KOS-Yp-xhg">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="4g7-cp-GQt">
                             <connections>
                                 <action selector="logout:" destination="IJr-Nk-cZq" id="wlz-a9-6X8"/>
@@ -143,7 +143,7 @@
             </objects>
             <point key="canvasLocation" x="1386" y="268"/>
         </scene>
-        <!--New Improvement-->
+        <!--New Idea-->
         <scene sceneID="ud0-dh-1CL">
             <objects>
                 <viewController id="OgL-RM-IoW" customClass="addImprovementViewController" customModule="FoxFix" customModuleProvider="target" sceneMemberID="viewController">
@@ -189,7 +189,7 @@
                             <constraint firstItem="5aX-xg-tF4" firstAttribute="leading" secondItem="19y-bh-FpH" secondAttribute="leading" id="v4L-tA-9n9"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="New Improvement" id="X3d-kk-IbY">
+                    <navigationItem key="navigationItem" title="New Idea" id="X3d-kk-IbY">
                         <barButtonItem key="rightBarButtonItem" title="Submit" id="qPG-wC-fCv">
                             <connections>
                                 <action selector="submitImprovement:" destination="OgL-RM-IoW" id="B9N-KI-Gst"/>
@@ -314,6 +314,13 @@
                             <constraint firstAttribute="trailingMargin" secondItem="CNK-8q-Fnb" secondAttribute="trailing" constant="-20" id="way-d4-7fO"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="fse-D5-7ab">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="mcC-s6-d4S">
+                            <connections>
+                                <action selector="shareImprovement:" destination="o1C-wa-6gR" id="pxr-Rb-y0b"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="descriptionLabel" destination="0aD-Q4-Fv1" id="6wS-3e-9W6"/>
                         <outlet property="lifecycleLabel" destination="mlc-UY-bJF" id="tHd-MT-TZL"/>

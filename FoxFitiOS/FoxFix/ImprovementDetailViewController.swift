@@ -86,6 +86,14 @@ class ImprovementDetailViewController: UIViewController, UITableViewDelegate, UI
         presentViewController(commentAlert, animated: true, completion: nil)
     }
     
+    @IBAction func shareImprovement(sender: UIBarButtonItem) {
+            let shareText = "Check out this awesome change!\n\n"
+            let shareURL = "http://www.exzackly7.com/PEH/backend/displayImprovements.php?iid=" + String(iid)
+            let activityVC = UIActivityViewController(activityItems: [shareText, shareURL], applicationActivities: nil)
+                
+            presentViewController(activityVC, animated: true, completion: nil)
+    }
+    
     //MARK: - Table view
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return comments.count

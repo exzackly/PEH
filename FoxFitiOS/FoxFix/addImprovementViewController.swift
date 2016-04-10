@@ -16,7 +16,7 @@ class addImprovementViewController: UIViewController {
     @IBAction func submitImprovement(sender: UIBarButtonItem) {
         do {
             var _ = try String(contentsOfURL: NSURL(string: "http://www.exzackly7.com/PEH/backend/addImprovement.php?uid=\(uid)&name=\(titleTextField.text!.stringByReplacingOccurrencesOfString(" ", withString: "%20"))&desc=\(descriptionTextField.text!.stringByReplacingOccurrencesOfString(" ", withString: "%20"))&lcp=idea")!)
-            dismissViewControllerAnimated(true, completion: nil)
+            navigationController?.popViewControllerAnimated(true)
         } catch let error {
             print(error)
         }
