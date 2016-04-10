@@ -9,7 +9,9 @@ function executeSQL($conn, $sql) {
 	if ($result) {
 		return $result;
 	} else {
-		die("Error: " . $sql . "<br>" . mysqli_error($conn));
+
+		// die("Error: " . $sql . "<br>" . mysqli_error($conn));
+		return false;
 	}
 }
 

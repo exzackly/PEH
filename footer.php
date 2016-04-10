@@ -51,6 +51,8 @@ echo <<<END
             toastr.success('Item added successfully!', 'Success!');
         } else if (status == "notLoggedIn"){
             toastr.error('You must be logged in.', 'Please Log In', {timeOut:700});
+        } else if (status == "invalidSignup"){
+            toastr.error('Invalid signup. Please check your credentials.', 'Invalid', {timeOut:700});
         }
     });
     </script>

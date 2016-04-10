@@ -1,5 +1,5 @@
 <?php
-$title = "FoxFix - Browse";
+$title = "FoxFix - Idea";
 $customCSS = "browse-page.css";
 require_once("header.php");
 ?>
@@ -23,14 +23,7 @@ require_once("header.php");
         $user = $outputArr[5];
 		$userLikes = false;
 		
-		$sql = "SELECT * FROM Likes WHERE uid='" . $_SESSION['uid'] ."' AND iid='" . $_GET['iid'] . "'";
-		$result = executeSQL($conn, $sql);
-
-		if($result){
-		  while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-			$userLikes = true;
-		  }
-		}
+		
     ?>
     
 	<?php require_once("navigation.php"); ?>

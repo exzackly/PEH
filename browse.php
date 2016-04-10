@@ -78,7 +78,9 @@ require_once('backend/session.php');
                         <!-- /.container -->
 
                     </div>';
-					}}
+                    echo '<hr>';
+					}
+                }
                     ?>
                                 
 
